@@ -3,9 +3,9 @@
 import { FullUser } from "../utils/api_types.ts";
 import { GlobalSearch } from "../islands/GlobalSearch.tsx";
 import { UserMenu } from "../islands/UserMenu.tsx";
-import { Logo } from "./Logo.tsx";
 import { GitHub } from "./icons/GitHub.tsx";
 import { SearchKind } from "../util.ts";
+import { HeaderLogo } from "../islands/HeaderLogo.tsx";
 
 export function Header({
   user,
@@ -52,15 +52,17 @@ export function Header({
         }`}
       >
         <div class="flex justify-between items-center text-base md:text-lg flex-wrap gap-4 lg:gap-8 h-full">
-          {isHomepage ? <div></div> : (
-            <a
-              href="/"
-              class="outline-none focus-visible:ring-2 ring-cyan-700"
-            >
-              <span className="sr-only">JSR home</span>
-              <Logo class="h-8 flex-none hover:animate-flip-rotate" />
-            </a>
-          )}
+          <div>
+            {!isHomepage && (
+              <a
+                href="/"
+                class="outline-none focus-visible:ring-2 ring-cyan-700"
+              >
+                <span className="sr-only">JSR home</span>
+                <HeaderLogo class="h-8 flex-none" />
+              </a>
+            )}
+          </div>
           <div class="hidden sm:block grow-1 flex-1">
             {!isHomepage && (
               <GlobalSearch
